@@ -31,14 +31,22 @@ function App() {
 
   return (
     <div className="container">
+      <h1>Messenger - Clone</h1>
+      <form>
       <FormControl>
-      <InputLabel for="msg">Enter a Message</InputLabel>
-      <Input id="msg" value={input} onChange={inputValue}></Input>
-      <Button type="submit"  disabled={!input} color="primary" variant="contained" onClick={send}>SEND</Button>
+        <InputLabel htmlFor="my-input">Enter a text Message</InputLabel>
+        <Input value={input} onChange={inputValue} type="text" id="my-input" autoFocus />
+        <Button disabled={!input} color="primary" variant="contained" type="submit" onClick={send}>Send</Button>
+        </FormControl>
+        </form>
       {
           messages.map(message => <Message un={message.username} msg={message.text}/>)
       }
-        </FormControl>
+      {/* <FormControl>
+      <InputLabel for="msg">Enter a Message</InputLabel>
+      <Input id="msg" value={input} onChange={inputValue}></Input>
+      <Button type="submit"  disabled={!input} color="primary" variant="contained" onClick={send}>SEND</Button>
+        </FormControl> */}
     </div>
   );
 }

@@ -1,5 +1,8 @@
-import React from 'react'
+import { makeStyles } from '@material-ui/core/styles';
 
-export default useStyle = () => {
-    
-}
+export default makeStyles({
+    message: {
+        marginTop: '10px',
+        backgroundColor: '#f0f0f0',
+    }
+});
