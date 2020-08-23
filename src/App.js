@@ -3,7 +3,9 @@ import './App.css';
 import Message from './Message';
 import useStyles from './styles/App';
 import db from './firebase';
-import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
+import firebase from 'firebase'
+import FlipMove from 'react-flip-move';
+import { Button, FormControl, Input, InputLabel, Typography } from '@material-ui/core';
 
 function App() {
 
@@ -20,41 +22,59 @@ function App() {
     setUserName(lowerName);
   }, []);
   
+
+  //getting data
   useEffect(() => {
-    db.collection('messages').onSnapshot(message => {
-      setMessages(message.docs.map(doc => doc.data()))
-    })
-  },[])
+    db.collection('messages')
+      .orderBy('timestamp', 'desc')
+      .onSnapshot(message => {
+        setMessages(message.docs.map(doc => ({ id: doc.id, data: doc.data(), })))
+      })
+  }, [])
 
-  const inputValue = (event) => {
-    event.preventDefault();
-    setInput(event.target.value);
-  }
+    const inputValue = (event) => {
+      event.preventDefault();
+      setInput(event.target.value);
+    }
 
-  const send = (event) => {
-    event.preventDefault();
-    let arr = messages;
-    let toPush = {username: userName, message: input}
-    arr.unshift(toPush);
-    setMessages(arr);
-    setInput('');
-  }
+    const amt = messages.length;
 
-  return (
-    <div className={className.container}>
-      <h1>Messenger - Clone</h1>
-      <form class={className.form}>
-      <FormControl class={className.formControl}>
-        <InputLabel htmlFor="my-input">Enter a text Message</InputLabel>
-        <Input className={className.input} value={input} onChange={inputValue} type="text" id="my-input" />
-        <Button className={className.button} disabled={!input} color="primary" variant="contained" type="submit" onClick={send}>Send</Button>
-        </FormControl>
+    
+    //putting data
+    const send = (event) => {
+      event.preventDefault();
+      db.collection('messages').add({
+        username: userName,
+        message: input,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+      setInput('');
+      window.scroll({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth'
+      });
+    }
+
+    return (
+      <div className={className.container}>
+        <img src="https://facebookbrand.com/wp-content/uploads/2018/09/Header-e1538151782912.png?w=100&h=100" />
+        <Typography variant="body5" component="h2">Welcome {userName}</Typography>
+        <form className={className.form__a}>
+          <FormControl>
+            <InputLabel htmlFor="my-input">Enter a text Message</InputLabel>
+            <Input autoComplete="off" className={className.input} value={input} onChange={inputValue} type="text" id="my-input" />
+            <Button className={className.button} disabled={!input} color="primary" variant="contained" type="submit" onClick={send}>Send</Button>
+          </FormControl>
         </form>
-      {
-          messages.slice(0).reverse().map(message => <Message un={userName} msg={message}/>)
-      }
-    </div>
-  );
+        <FlipMove>
+          {
+            messages.map((message, id) => <Message key={message.id} un={userName} msg={message.data} />)
+          }
+        </FlipMove>
+        <div className={className.height__a}></div>
+      </div>
+    );
 }
 
 export default App;

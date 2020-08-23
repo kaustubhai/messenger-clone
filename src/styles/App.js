@@ -1,24 +1,22 @@
-import {makeStyles} from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles({
     container: {
-        maxWidth: '800px',
-        margin: 'auto',
-        display: 'relative',
-        alignContent: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column'
+        paddingLeft: '50px',
+        paddingRight: '50px',
     },
-    form: {
-        position: 'absolute',
-        marginTop: '78vh',
-        width: '100%'
-    },
-    formControl: {
-        width: '100%'
-    },
-    input: {
+    form__a: {
+        position: 'fixed',
+        textAlign: 'center',
+        bottom: '0px',
+        backgroundColor: '#fff',
+        zIndex: 2,
         width: '100%',
-        maxWidth: '800px'
+        padding: '10px',
+        border: 'none',
+        boxShadow: 'none',
+    },
+    height__a: {
+        height: '50px'
     }
 })
