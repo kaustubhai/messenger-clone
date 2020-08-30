@@ -58,7 +58,7 @@ function App() {
 
     return (
       <div className={className.container}>
-        <img src="https://facebookbrand.com/wp-content/uploads/2018/09/Header-e1538151782912.png?w=100&h=100" />
+        <img src="https://cdn.brandfolder.io/5H442O3W/as/pl546j-7le8zk-199wkt/Slack_Mark.png" />
         <Typography variant="body5" component="h2">Welcome {userName}</Typography>
         <form className={className.form__a}>
           <FormControl>
