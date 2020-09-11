@@ -18,5 +18,10 @@ export default makeStyles({
     },
     height__a: {
         height: '50px'
+    },
+    input2: {
+        width: '80em',
+        marginBottom: '5px',
+        color: 'red'
     }
 })

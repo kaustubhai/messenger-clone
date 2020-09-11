@@ -5,7 +5,7 @@ import useStyles from './styles/App';
 import db from './firebase';
 import firebase from 'firebase'
 import FlipMove from 'react-flip-move';
-import { Button, FormControl, Input, InputLabel, Typography } from '@material-ui/core';
+import { Button, FormControl, TextField, Typography } from '@material-ui/core';
 
 function App() {
 
@@ -62,8 +62,7 @@ function App() {
         <Typography variant="body5" component="h2">Welcome {userName}</Typography>
         <form className={className.form__a}>
           <FormControl>
-            <InputLabel htmlFor="my-input">Enter a text Message</InputLabel>
-            <Input autoComplete="off" className={className.input} value={input} onChange={inputValue} type="text" id="my-input" />
+            <TextField label="Enter a text Message" autoComplete="off" className={className.input2} value={input} onChange={inputValue} variant="outlined" type="text" id="outlined-basic" />
             <Button className={className.button} disabled={!input} color="primary" variant="contained" type="submit" onClick={send}>Send</Button>
           </FormControl>
         </form>
