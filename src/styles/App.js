@@ -12,16 +12,19 @@ export default makeStyles({
         backgroundColor: '#fff',
         zIndex: 2,
         width: '100%',
-        padding: '10px',
+        padding: '0px',
         border: 'none',
         boxShadow: 'none',
+        margin: 'auto',
     },
     height__a: {
         height: '50px'
     },
     input2: {
-        width: '80em',
-        marginBottom: '5px',
-        color: 'red'
+        width: '60vw',
+        margin: '5px auto',
+        color: 'red',
+        textAlign: 'center',
+        left: '0px'
     }
 })
