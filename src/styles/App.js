@@ -2,8 +2,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles({
     container: {
-        paddingLeft: '50px',
-        paddingRight: '50px',
+        paddingLeft: '4%',
+        paddingRight: '4%',
     },
     form__a: {
         position: 'fixed',
@@ -16,15 +16,17 @@ export default makeStyles({
         border: 'none',
         boxShadow: 'none',
         margin: 'auto',
+        paddingBottom: '5px',
     },
     height__a: {
-        height: '50px'
+        height: '8%'
     },
     input2: {
-        width: '60vw',
+        width: '80vw',
         margin: '5px auto',
         color: 'red',
         textAlign: 'center',
-        left: '0px'
+        left: '0px',
+        paddingLeft: '-2%'
     }
 })
