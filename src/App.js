@@ -17,6 +17,8 @@ function App() {
 
   useEffect(() => {
     let name = prompt('Enter your Username');
+    if (!name)
+      return
     name = name.toLowerCase();
     let lowerName = name.charAt(0).toUpperCase() + name.slice(1);
     setUserName(lowerName);
@@ -37,8 +39,6 @@ function App() {
       setInput(event.target.value);
     }
 
-    const amt = messages.length;
-
     
     //putting data
     const send = (event) => {
@@ -58,12 +58,12 @@ function App() {
 
     return (
       <div className={className.container}>
-        <img src="https://cdn.brandfolder.io/5H442O3W/as/pl546j-7le8zk-199wkt/Slack_Mark.png" />
+        <img src="https://cdn.brandfolder.io/5H442O3W/as/pl546j-7le8zk-199wkt/Slack_Mark.png" alt="Main_logo"/>
         <Typography variant="body5" component="h2">Welcome {userName}</Typography>
         <form className={className.form__a}>
           <FormControl>
             <TextField label="Enter a text Message" autoComplete="off" className={className.input2} value={input} onChange={inputValue} variant="outlined" type="text" id="outlined-basic" />
-            <Button className={className.button} disabled={!input} color="primary" variant="contained" type="submit" onClick={send}>Send</Button>
+            <Button className={className.button} disabled={!input || !userName} color="primary" variant="contained" type="submit" onClick={send}>Send</Button>
           </FormControl>
         </form>
         <FlipMove>
